@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antique buying/selling online store</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        body {
+            background-image: url('https://wheresaintsgo.co.uk/media/wysiwyg/New_Vintage_Thumbmail_High_Res_1.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Antique buying/selling online store</h1>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <form>
+                    <div class="form-group">
+                        <label for="login">Login/Signup</label>
+                        <input type="text" class="form-control" id="login" placeholder="Enter your login or signup">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center">Search for items</h2>
+                <div class="form-group">
+                    <label for="searchForItems">Search for items</label>
+                    <input type="text" class="form-control" id="searchForItems" placeholder="Search">
+                    <button id="searchButton" class="btn btn-primary" type="button">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center">Sell Your Item</h2>
+                <form id="sellItemForm">
+                    <div class="form-group">
+                        <label for="itemType">Item Type</label>
+                        <input type="text" class="form-control" id="itemType" placeholder="Enter item type">
+                    </div>
+                    <div class="form-group">
+                        <label for="itemName">Item Name</label>
+                        <input type="text" class ="form-control" id="itemName" placeholder="Enter item name">
+                    </div>
+                    <div class="form-group">
+                        <label for="yearMade">Year Made</label>
+                        <input type="text" class="form-control" id="yearMade" placeholder="Enter year made">
+                    </div>
+                    <div class="form-group">
+                        <label for="condition">Condition</label>
+                        <input type="text" class="form-control" id="condition" placeholder="Enter condition">
+                    </div>
+                    <button type="button" class="btn btn-primary" id="submitSellItem">Submit</button>
+                    <input class="btn btn-primary" type="reset" value="Reset">
+                </form>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-6 offset-md-3">
+                <h2 class="text-center">Existing Items</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Item Type</th>
+                            <th>Item Name</th>
+                            <th>Year Made</th>
+                            <th>Condition</th>
+                        </tr>
+                    </thead>
+                    <tbody id="existingItemsTable">
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="w12.js"></script>
+</body>
+</html>
