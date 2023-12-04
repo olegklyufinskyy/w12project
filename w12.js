@@ -1,21 +1,18 @@
+const port = 3000; // The port you want your server to listen on
 
- const port = 3000; // The port you want your server to listen on
-​
 document.addEventListener("DOMContentLoaded", function () {
   loadExistingItems();
-  const port = 3000; // The port you want your server to listen on
-​
+
   const submitSellItemButton = document.getElementById("submitSellItem");
-​
+
   submitSellItemButton.addEventListener("click", function () {
     const itemType = document.getElementById("itemType").value;
     const itemName = document.getElementById("itemName").value;
     const yearMade = document.getElementById("yearMade").value;
     const condition = document.getElementById("condition").value;
-​
+
     $.ajax({
-        // The URL is using Template Literal to have the port number easily changeable. 
-      url: `http://localhost:${port}/items`,
+      url: `http://localhost:${port}/submitItem`, // Update endpoint
       type: "POST",
       data: {
         itemType: itemType,
@@ -31,16 +28,18 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
   });
-​
-  const resetButton = document.querySelector("input[type='reset']");
-  resetButton.addEventListener("click", function () {
-    document.getElementById("itemType").value = "";
-    document.getElementById("itemName").value = "";
-    document.getElementById("yearMade").value = "";
-    document.getElementById("condition").value = "";
-  });
+
+  // Rest of the code remains the same...
 });
-​
+
+const resetButton = document.querySelector("input[type='reset']");
+resetButton.addEventListener("click", function () {
+  document.getElementById("itemType").value = "";
+  document.getElementById("itemName").value = "";
+  document.getElementById("yearMade").value = "";
+  document.getElementById("condition").value = "";
+});
+
 function loadExistingItems() {
   $.ajax({
     url: `http://localhost:${port}/items`,
@@ -48,7 +47,7 @@ function loadExistingItems() {
     success: function (data) {
       const existingItemsTable = document.getElementById("existingItemsTable");
       existingItemsTable.innerHTML = "";
-​
+
       data.forEach(function (item) {
         const row = existingItemsTable.insertRow();
         const cell1 = row.insertCell(0);
@@ -67,28 +66,25 @@ function loadExistingItems() {
   });
 }
 // server.js
-​
+
 const express = require("express");
 const app = express();
-​
-app.use(express.json()); // Parse JSON requests
-​
-// Sample data store for existing items
+
+app.use(express.json());
+
 const existingItems = [];
-​
-// POST endpoint to submit an item
+
 app.post("/submitItem", (req, res) => {
   const { itemType, itemName, yearMade, condition } = req.body;
   const newItem = { itemType, itemName, yearMade, condition };
   existingItems.push(newItem);
   res.json({ message: "Item submitted successfully" });
 });
-​
-// GET endpoint to retrieve existing items
+
 app.get("/getItems", (req, res) => {
   res.json(existingItems);
 });
-​
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
